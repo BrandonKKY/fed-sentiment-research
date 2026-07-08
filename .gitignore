@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+# Raw scraped HTML is reproducible via scripts/download_fomc.py; keep the
+# repo light. Processed CSVs and outputs are committed for reviewability.
+data/raw/
+.venv/

@@ -1,0 +1,38 @@
+========================================================================
+HONEST VALIDATION SUMMARY (see REPORT.md for interpretation)
+========================================================================
+forward-return grid: 108 hypotheses per split; Bonferroni alpha = 0.05/108 = 4.63e-04
+
+--- Measure validation (announcement-day, NOT tradable) ---
+a priori check: hawkish statement surprise (lex_abg_net_chg) should
+move 2y yields UP on the day.
+  train: n= 50  pearson r=+0.020 (p=0.8897)  spearman rho=+0.007 (p=0.9613)
+  test : n= 44  pearson r=+0.000 (p=1.0000)  spearman rho=-0.004 (p=0.9784)
+
+--- PRIMARY pre-registered predictive hypothesis ---
+statement lex_abg_net_chg -> 5-day forward DGS2 change (positive)
+  train: n= 50  pearson r=+0.121 (p=0.4027)  spearman rho=+0.091 (p=0.5311)
+  test : n= 44  pearson r=-0.205 (p=0.1814)  spearman rho=-0.120 (p=0.4388)
+
+--- Exploratory grid: top-5 train correlations vs their test twins ---
+doc_type   signal                 asset  outcome    train r   train p    test r    test p
+statement  emb_score_chg          DGS2   fwd_1       +0.394    0.0046    -0.192    0.2113
+minutes    lex_abg_fomc_net       DGS2   fwd_1       -0.335    0.0199    -0.224    0.1440
+statement  emb_score_chg          DGS10  fwd_1       +0.324    0.0216    +0.027    0.8630
+minutes    emb_score              DGS10  fwd_21      -0.319    0.0269    -0.071    0.6471
+minutes    emb_score              DGS10  fwd_5       -0.319    0.0271    +0.071    0.6447
+
+--- Bonferroni survivors in the forward grid (both splits) ---
+  NONE. No forward-looking correlation survives multiple-testing
+  correction in either split.
+
+--- Announcement-day family (36 tests/split, Bonferroni alpha = 1.39e-03) ---
+contemporaneous, NOT tradable; survivors:
+  test statement lex_abg_fomc_net DGS2: r=+0.491 p=7.09e-04 n=44
+  test statement emb_score_chg DGS2: r=-0.469 p=1.32e-03 n=44
+  train statement emb_score_chg DGS10: r=-0.510 p=1.54e-04 n=50
+  test statement lex_abg_fomc_net DGS10: r=+0.523 p=2.67e-04 n=44
+
+--- Method agreement across all 2015+ events ---
+  statement  corr(abg, abg_fomc)=+0.68  corr(abg, emb)=+0.10  corr(abg_fomc, emb)=+0.20
+  minutes    corr(abg, abg_fomc)=+0.82  corr(abg, emb)=+0.32  corr(abg_fomc, emb)=+0.15

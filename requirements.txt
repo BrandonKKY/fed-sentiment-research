@@ -1,0 +1,11 @@
+requests>=2.31
+beautifulsoup4>=4.12
+pandas>=2.1
+numpy>=1.26
+scipy>=1.11
+matplotlib>=3.8
+pytest>=8.0
+# Optional, for the embedding-based scorer (approach 2). Large download;
+# the pipeline degrades gracefully to lexicon-only if absent.
+# torch
+# transformers
